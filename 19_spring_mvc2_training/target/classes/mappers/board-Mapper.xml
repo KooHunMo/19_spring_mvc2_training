@@ -25,6 +25,13 @@
 		)
 		
 	</insert>
+							<!-- db컬럼명과 스프링 POJO의 필드와 매칭되는 설정 -->
+	<select id="getAllBoard" resultType="com.spring.training.board.dto.BoardDto"> <!-- resultType: 반환타입 - Dto -->
+	SELECT 
+			*
+	FROM
+			T_BOARD;
 	
+	</select>
 	
 </mapper>
