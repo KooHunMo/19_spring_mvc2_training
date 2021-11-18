@@ -30,8 +30,19 @@
 	SELECT 
 			*
 	FROM
-			T_BOARD;
+			T_BOARD <!-- ; 쓰는거 맞아?  답: 안씀 -->
 	
 	</select>
+	
+	<select id="getOneBoard" parameterType="int" resultType="com.spring.training.board.dto.BoardDto">
+		SELECT
+				*
+		FROM
+				T_BOARD
+		WHERE
+				NUM= #{num}
+	
+	</select>
+	
 	
 </mapper>

@@ -12,17 +12,22 @@ import com.spring.training.board.dto.BoardDto;
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired
-	private BoardDao BoardDao;
+	private BoardDao boardDao;
 	
 	@Override
 	public void insertBoard(BoardDto boardDto) {
-		BoardDao.insert(boardDto);
+		boardDao.insert(boardDto);
 	}
 
 	@Override
 	public List<BoardDto> getBoardList() {
-		return BoardDao.selectAll();
+		return boardDao.selectAll();
 		
+	}
+
+	@Override
+	public BoardDto getOneBoard(int num) {
+		return boardDao.selectOne(num);
 	}
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.training.board.dto.BoardDto;
 import com.spring.training.board.service.BoardService;
@@ -44,6 +45,21 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		
 		return "board/bList";
+		
+	}
+	
+	
+	@RequestMapping(value="/boardInfo", method=RequestMethod.GET)
+	public String boardInfo(@RequestParam("num") int num, Model model) { // getParameter안 써도 int num 하나로 BList의 ?num을 가져온다 //@RequestParam("num") 요청되는 것이 num인 것
+		
+		System.out.println(num); // 확인 이거 안댐
+		
+		BoardDto boardDto = boardService.getOneBoard(num);
+		System.out.println(boardDto);
+		model.addAttribute("boardDto", boardDto);
+		return "board/bInfo";
+		
+		
 		
 	}
 }

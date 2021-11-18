@@ -8,5 +8,7 @@ public interface BoardService {
 
 	public void insertBoard(BoardDto boardDto);
 	
-public List<BoardDto> getBoardList();
+	public List<BoardDto> getBoardList();
+	
+	public BoardDto getOneBoard(int num);
 }

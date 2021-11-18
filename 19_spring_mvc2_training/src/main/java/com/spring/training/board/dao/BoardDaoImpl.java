@@ -26,9 +26,14 @@ public class BoardDaoImpl implements BoardDao {
 	public List<BoardDto> selectAll() {
 		
 		return sqlSession.selectList("mapper.BoardMapper.getAllBoard"); // 모든 쿼리문이 여기 담겨있음 리턴으로 올린다
-			// sqlSession.selectOne(statement); 두종류가 있음
+			// sqlSession.selectOne(statement); 두종류가 있음/ 한줄만 받을 때 사용
 		
 		
+	}
+
+	@Override
+	public BoardDto selectOne(int num) {
+		return sqlSession.selectOne("mapper.BoardMapper.getOneBoard", num); // num을 넘겨준다
 	}
 
 }
