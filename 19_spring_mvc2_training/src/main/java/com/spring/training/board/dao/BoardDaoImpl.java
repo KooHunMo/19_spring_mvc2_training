@@ -11,12 +11,16 @@ import com.spring.training.board.dto.BoardDto;
 public class BoardDaoImpl implements BoardDao {
 
 	@Autowired
-	private SqlSession sqlsession; // DB연결 정보 불러옴 - ioC사용 
+	private SqlSession sqlSession; // DB연결 정보 불러옴 - ioC사용 
 	
 	@Override
 	public void insert(BoardDto boardDto) {
 		System.out.println("----DAO----");
 		System.out.println(boardDto);
+		
+		
+					  // (namespace명.쿼리id명, 파라메타)
+		sqlSession.insert("mapper.BoardMapper.insertBoard", boardDto); //mapper.BoardMapper.insertBoard 여기에 boardDto를 넣는다
 	}
 
 }

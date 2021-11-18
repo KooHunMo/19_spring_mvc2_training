@@ -4,5 +4,6 @@ import com.spring.training.board.dto.BoardDto;
 
 public interface BoardDao {
 
-		public void insert(BoardDto boardDto);
+	public void insert(BoardDto boardDto);
+	
 }
