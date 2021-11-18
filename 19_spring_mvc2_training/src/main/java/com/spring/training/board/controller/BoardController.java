@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,19 +27,23 @@ public class BoardController {
 		System.out.println(boardDto);
 		boardService.insertBoard(boardDto);
 		
-		return "home"; 
+		//return "board/bList"; //순전히 jsp만 타기 때문에 리다이렉트로 이동시켜줘야 DB의 내용을 얻어온다.
+		
+		return "redirect:boardList"; // redirect:url 해당 url로 이동한다
 	}
 	
-	@RequestMapping(value="/boardList", method=RequestMethod.GET)
-	public String boardList() {
+	@RequestMapping(value="/boardList", method=RequestMethod.GET) //     /를 붙이면 앞에 .~ 하나가 url에서 사라짐
+	public String boardList(Model model) {
 		
 		List<BoardDto> boardList = boardService.getBoardList();
+		/*
+		 * for (BoardDto boardDto : boardList) { System.out.println(boardDto); }
+		 */
+		// request.setAttribute("boardList", boardList);
+		//mv.addObject("boardList", boardList);
+		model.addAttribute("boardList", boardList);
 		
-		for (BoardDto boardDto : boardList) {
-			System.out.println(boardDto);
-		}
-		
-		return "home";
+		return "board/bList";
 		
 	}
 }
