@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td>작성일</td>
-				<td>${boardDto.regDate }</td>
+				<td><fmt:formatDate value="${boardDto.regDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td>${boardDto.count }</td>
+				<td>${boardDto.subject }</td>
 			</tr>
 			<tr>
 				<td>글 내용</td>
