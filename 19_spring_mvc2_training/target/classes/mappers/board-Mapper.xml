@@ -40,9 +40,24 @@
 		FROM
 				T_BOARD
 		WHERE
-				NUM= #{num}
+				NUM= #{num}  <!-- #이 뭐지 -->
 	
 	</select>
 	
+	<select id="validateUserCheck" parameterType="com.spring.training.board.dto.BoardDto" resultType="com.spring.training.board.dto.BoardDto">
+		SELECT						<!-- 받고 주는 것 모두 DTO로 써야한다. 주고 받기 때문에 -->
+				* <!-- 이것 때문에 resultType="com.spring.training.board.dto.BoardDto"를 쓴다 -->
+		FROM
+				T_BOARD
+		WHERE
+					NUM = #{num} AND PASSWORD = #{password}  <!-- 대소문자 구분할 것 -->
+	</select>		<!-- 이것 때문에 parameterType="com.spring.training.board.dto.BoardDto" 를 쓴다 -->
+	
+	<delete id="deleteBoard" parameterType="int"> <!-- select가 아니기 때문에 resultType은 없다-->
+		DELETE FROM 
+				T_BOARD 
+		WHERE 
+				NUM=#{num}
+	</delete>
 	
 </mapper>

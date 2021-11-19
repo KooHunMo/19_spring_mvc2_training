@@ -11,4 +11,6 @@ public interface BoardService {
 	public List<BoardDto> getBoardList();
 	
 	public BoardDto getOneBoard(int num);
+	
+	public boolean deleteBoard(BoardDto boardDto); //체크하는건 boolean 돌아가는건 BoardDto
 }

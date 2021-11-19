@@ -52,14 +52,32 @@ public class BoardController {
 	@RequestMapping(value="/boardInfo", method=RequestMethod.GET)
 	public String boardInfo(@RequestParam("num") int num, Model model) { // getParameter안 써도 int num 하나로 BList의 ?num을 가져온다 //@RequestParam("num") 요청되는 것이 num인 것
 		
-		System.out.println(num); // 확인 이거 안댐
-		
 		BoardDto boardDto = boardService.getOneBoard(num);
-		System.out.println(boardDto);
+		
 		model.addAttribute("boardDto", boardDto);
+		
 		return "board/bInfo";
-		
-		
-		
 	}
+		
+	@RequestMapping(value="/boardDelete", method=RequestMethod.GET)
+		public String boardDelete(@RequestParam("num") int num, Model model) {
+		
+		model.addAttribute("boardDto", boardService.getOneBoard(num));
+		
+		return "board/bDelete";
+	}
+	
+	@RequestMapping(value="/boardDelete", method=RequestMethod.POST)
+	public String boardDelete(BoardDto boardDto , Model model) {
+	
+	if(boardService.deleteBoard(boardDto)) {
+		model.addAttribute("success", true);
+	}else {
+		model.addAttribute("success", false);
+	}
+	
+	return "board/bDeletePro";
+}
+		
+	
 }

@@ -36,4 +36,16 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.selectOne("mapper.BoardMapper.getOneBoard", num); // num을 넘겨준다
 	}
 
+	@Override
+	public BoardDto validateUserCheck(BoardDto boardDto) {
+	
+		return sqlSession.selectOne("mapper.BoardMapper.validateUserCheck", boardDto);
+	}
+
+	@Override
+	public void delete(int num) {
+		sqlSession.delete("mapper.BoardMapper.deleteBoard", num);
+		
+	}
+
 }
