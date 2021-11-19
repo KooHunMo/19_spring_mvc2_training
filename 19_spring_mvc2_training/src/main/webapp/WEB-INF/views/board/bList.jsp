@@ -18,7 +18,7 @@
 				<td>작성일</td>
 				<td>조회수</td>
 			</tr>
-			<c:forEach var="boardDto" items="${boardList}">
+			<c:forEach var="boardDto" items="${boardList}">  <!-- boardList를 받아온다 -->
 					<tr>
 							<td>${boardDto.num }</td>
 							<td><a href="boardInfo?num=${boardDto.num }"> ${boardDto.subject } </a></td>

@@ -13,4 +13,7 @@ public interface BoardService {
 	public BoardDto getOneBoard(int num);
 	
 	public boolean deleteBoard(BoardDto boardDto); //체크하는건 boolean 돌아가는건 BoardDto
+
+	public boolean updateBoard(BoardDto boardDto);
+
 }

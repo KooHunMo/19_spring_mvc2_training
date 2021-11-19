@@ -36,7 +36,8 @@ public class BoardController {
 	@RequestMapping(value="/boardList", method=RequestMethod.GET) //     /를 붙이면 앞에 .~ 하나가 url에서 사라짐
 	public String boardList(Model model) {
 		
-		List<BoardDto> boardList = boardService.getBoardList();
+		List<BoardDto> boardList = boardService.getBoardList(); // list를 arrayList로 바꿔도 됨. 
+								 //boardService의 getBoardList를 연결해줌.
 		/*
 		 * for (BoardDto boardDto : boardList) { System.out.println(boardDto); }
 		 */
@@ -50,8 +51,8 @@ public class BoardController {
 	
 	
 	@RequestMapping(value="/boardInfo", method=RequestMethod.GET)
-	public String boardInfo(@RequestParam("num") int num, Model model) { // getParameter안 써도 int num 하나로 BList의 ?num을 가져온다 //@RequestParam("num") 요청되는 것이 num인 것
-		
+	public String boardInfo(@RequestParam("num") int num, Model model) { // getParameter안 써도 int num 하나로 BList의 ?num을 가져온다 //@RequestParam("num")으로 요청되는 것이 int num인 것
+														  // model 객체를 괄호 안에서 바로 만들 수 있다 Spring의 문법이다. =null, new~ 안해도 됨.
 		BoardDto boardDto = boardService.getOneBoard(num);
 		
 		model.addAttribute("boardDto", boardDto);
@@ -78,6 +79,27 @@ public class BoardController {
 	
 	return "board/bDeletePro";
 }
+	
+	@RequestMapping(value="/boardUpdate", method=RequestMethod.GET)
+	public String boardUpdate(@RequestParam("num") int num, Model model) {
 		
+		model.addAttribute("boardDto", boardService.getOneBoard(num));
+		
+		return "board/bUpdate";
+		
+	}
+	
+	@RequestMapping(value="/boardUpdate",method=RequestMethod.POST)
+	public String boardUpdate(BoardDto boardDto, Model model) {
+		
+		if(boardService.updateBoard(boardDto)) {
+			model.addAttribute("success", true);
+		}else {
+			model.addAttribute("success", false);
+		}
+		
+		return "board/bUpdatePro";
+		
+	}
 	
 }

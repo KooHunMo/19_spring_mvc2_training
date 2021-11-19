@@ -48,4 +48,16 @@ public class BoardDaoImpl implements BoardDao {
 		
 	}
 
+	@Override
+	public void update(BoardDto boardDto) {
+		sqlSession.update("mapper.BoardMapper.updateBoard", boardDto);
+		
+	}
+
+	@Override
+	public void increaseReadCount(int num) {
+		sqlSession.update("mapper.BoardMapper.increaseReadCount", num);
+		
+	}
+
 }

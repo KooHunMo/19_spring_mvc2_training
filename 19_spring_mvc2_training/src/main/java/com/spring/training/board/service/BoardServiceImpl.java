@@ -27,6 +27,10 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardDto getOneBoard(int num) {
+		
+		//조회수를 올리는 dao
+		boardDao.increaseReadCount(num);
+		
 		return boardDao.selectOne(num);
 	}
 
@@ -39,6 +43,17 @@ public class BoardServiceImpl implements BoardService{
 			isSucceed = true;
 		}
 		
+		return isSucceed;
+	}
+
+	@Override
+	public boolean updateBoard(BoardDto boardDto) {
+		boolean isSucceed = false;
+		
+		if(boardDao.validateUserCheck(boardDto) != null) {
+			boardDao.update(boardDto); // num만 보내는게 아니라 다 보내는것이기 때문에 boardDto를 사용한다
+			isSucceed = true;
+		}
 		return isSucceed;
 	}
 	
