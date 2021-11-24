@@ -18,6 +18,11 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@RequestMapping(value="/" , method = RequestMethod.GET)
+	public String main() {
+		return "board/bMain";
+	}
+	
 	@RequestMapping(value="/boardWrite" , method=RequestMethod.GET) //jsp파일을 리턴하기 때문에 String으로 지정된다. // value에는 url주소를 명시 , method는 요청 타입을 명시( 생략시 GET,POST 모두 처리 )
 	public String boardWrite() {
 		return "board/bWrite"; 		// servlet-context.xml에 명시된 대로 포워딩 시킬 jsp파일을 작성한다.
@@ -25,11 +30,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/boardWrite" , method=RequestMethod.POST) 
 	public String boardWrite(BoardDto boardDto) {  // memberDto = setString(request.getPatameter("id"))등등 를 한번에 처리한다.
-		System.out.println(boardDto);
 		boardService.insertBoard(boardDto);
-		
 		//return "board/bList"; //순전히 jsp만 타기 때문에 리다이렉트로 이동시켜줘야 DB의 내용을 얻어온다.
-		
 		return "redirect:boardList"; // redirect:url 해당 url로 이동한다
 	}
 	
