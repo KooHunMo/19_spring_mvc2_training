@@ -23,7 +23,8 @@ public class BoardController {
 		return "board/bMain";
 	}
 	
-	@RequestMapping(value="/boardWrite" , method=RequestMethod.GET) //jsp파일을 리턴하기 때문에 String으로 지정된다. // value에는 url주소를 명시 , method는 요청 타입을 명시( 생략시 GET,POST 모두 처리 )
+	@RequestMapping(value="/boardWrite" , method=RequestMethod.GET) //jsp파일을 리턴하기 때문에 String으로 지정된다. 
+				// value에는 url주소를 명시 , method는 요청 타입을 명시( 생략시 GET,POST 모두 처리 )
 	public String boardWrite() {
 		return "board/bWrite"; 		// servlet-context.xml에 명시된 대로 포워딩 시킬 jsp파일을 작성한다.
 	}
@@ -52,7 +53,8 @@ public class BoardController {
 	
 	
 	@RequestMapping(value="/boardInfo", method=RequestMethod.GET)
-	public String boardInfo(@RequestParam("num") int num, Model model) { // getParameter안 써도 int num 하나로 BList의 ?num을 가져온다 //@RequestParam("num") 요청되는 것이 num인 것
+	public String boardInfo(@RequestParam("num") int num, Model model) { // getParameter안 써도 int num 하나로 BList의 ?num을 가져온다 
+						  //@RequestParam("num") 요청되는 것이 num인 것
 		
 		BoardDto boardDto = boardService.getOneBoard(num);
 		
