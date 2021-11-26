@@ -84,4 +84,24 @@ public class BoardController {
 }
 		
 	
+	@RequestMapping(value="/boardUpdate" , method=RequestMethod.GET)
+	public String boardUpdate(@RequestParam("num") int num , Model model) {
+		model.addAttribute("boardDto" , boardService.getOneBoard(num));
+		return "board/bUpdate";
+	}
+	
+	@RequestMapping(value="/boardUpdate" , method=RequestMethod.POST)
+	public String boardUpdate(BoardDto boardDto , Model model) {
+		
+		if (boardService.updateBoard(boardDto)) {
+			model.addAttribute("success" , true);
+		}
+		else {
+			model.addAttribute("success" , false);
+		}
+		
+		return "board/bUpdatePro";
+	
+	}
+	
 }
