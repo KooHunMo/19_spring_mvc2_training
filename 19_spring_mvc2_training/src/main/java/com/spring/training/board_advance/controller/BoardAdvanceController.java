@@ -41,10 +41,11 @@ public class BoardAdvanceController {
 							Model model) throws Exception {
 		
 		// 페이지의 시작 게시글 인덱스
-		int startBoardIdx =  (currentPageNumber -1) * onePageViewCount;
+		int startBoardIdx =  (currentPageNumber -1) * onePageViewCount; // -1왜하는걸까?
 		
 		// 관련 정보 Map 생성 ( 한페이지에 보여줄 게시글 숫자 , 시작페이지의 인덱스 , 검색 키워드 , 검색어 ) 
 		Map<String, Object> searchInfo = new HashMap<String, Object>();
+		 // key 값, value 값
 		searchInfo.put("onePageViewCount", onePageViewCount);
 		searchInfo.put("startBoardIdx", startBoardIdx);
 		searchInfo.put("searchKeyword", searchKeyword);
@@ -59,6 +60,9 @@ public class BoardAdvanceController {
 		// 전체페이지 개수 = 전체게시글 수 / 한페이지에서 보여지는 글수
 		int totalBoardCount = boardAdvanceService.getAllBoardCount(searchCountInfo);
 		int addPage = totalBoardCount % onePageViewCount == 0 ? 0 : 1; 		// 나머지가 0이면 추가 x , 나머지가 0이 아니면 +1 페이지 처리
+														//	if: 나머지가 0일때 true=0, false=1
+		// boolean을 int로 어떻게 바꾸나요?
+		// int myInt = (myBoolean) ? 1 : 0; 1이 true이고 0이 false입니다.
 		int totalPageCount = totalBoardCount / onePageViewCount + addPage;
 		
 		
@@ -91,7 +95,7 @@ public class BoardAdvanceController {
 		// 게시물이 한페이지에 보여지는 것보다 작다면
 		if (onePageViewCount > totalBoardCount) {
 			startPage = 1;
-			endPage = 0;
+			endPage = 0; //?
 		}
 		
 				

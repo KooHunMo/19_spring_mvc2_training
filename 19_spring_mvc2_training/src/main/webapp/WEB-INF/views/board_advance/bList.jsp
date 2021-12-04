@@ -8,7 +8,7 @@
 <meta charset="utf-8" />
 <title>BoardList</title>
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script> <!--몇개씩 잡는거 설정 할 때 디자인에 필요  -->
 <link href="${contextPath}/resources/css/styles.css" rel="stylesheet" />
 <script src="${contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script>

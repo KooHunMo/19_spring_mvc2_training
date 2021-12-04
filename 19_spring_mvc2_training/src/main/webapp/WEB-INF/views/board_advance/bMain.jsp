@@ -41,6 +41,7 @@
 
 <body>
 	<div align="center" style="padding-top: 100px">
+		${contextPath } <!--mvc 16에 있다  --> 
 		<img src="${contextPath }/resources/img/spring.png" alt="spring심볼" width="800px" height="500px"><br><br><br><br>
 		<input type="button" value="게시판 보기" onclick="location.href='${contextPath }/boardAdvance/boardList'">
 	</div>
