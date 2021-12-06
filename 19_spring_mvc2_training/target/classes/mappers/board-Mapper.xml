@@ -40,7 +40,7 @@
 		FROM
 				T_BOARD
 		WHERE
-				NUM= #{num}  <!-- #이 뭐지 -->
+				NUM= #{num}  <!-- #이 뭐지: 보안상 $대신 씀-->
 	
 	</select>
 	

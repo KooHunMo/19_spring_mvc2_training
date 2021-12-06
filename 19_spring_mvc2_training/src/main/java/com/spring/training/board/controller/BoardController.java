@@ -39,7 +39,7 @@ public class BoardController {
 	@RequestMapping(value="/boardList", method=RequestMethod.GET) //     /를 붙이면 앞에 .~ 하나가 url에서 사라짐
 	public String boardList(Model model) {
 		
-		List<BoardDto> boardList = boardService.getBoardList();
+		List<BoardDto> boardList = boardService.getBoardList(); // boardService에 연결된 List에 getBoardList메서드를 담는다
 		/*
 		 * for (BoardDto boardDto : boardList) { System.out.println(boardDto); }
 		 */
@@ -64,7 +64,7 @@ public class BoardController {
 	}
 		
 	@RequestMapping(value="/boardDelete", method=RequestMethod.GET)
-		public String boardDelete(@RequestParam("num") int num, Model model) {
+		public String boardDelete(@RequestParam("num") int num, Model model) { // boardController에서 model 사용
 		
 		model.addAttribute("boardDto", boardService.getOneBoard(num));
 		
