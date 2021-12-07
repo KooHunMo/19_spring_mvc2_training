@@ -28,7 +28,7 @@ public class MemberServiceImpl implements MemberService {
 	public String overlapped(String memberId) throws Exception {
 		String isOverLapped = "true";
 		if (memberDao.overlapped(memberId) == null) {
-			return "false";
+			return "false";  // String 값을 내보냄
 		}
 		return isOverLapped;
 	}
@@ -42,8 +42,8 @@ public class MemberServiceImpl implements MemberService {
 			if (passwordEncoder.matches(memberDto.getMemberPw(), dbMemberDto.getMemberPw())) { // passwordEncoder 검색할 것
 				return memberDto;
 			} 
-		}
-		return null;
+		} 
+		return null; // 아이디가 없으면 null값을 내보낸다
 	}
 	
 	@Override
@@ -80,7 +80,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		if (passwordEncoder.matches(memberDto.getMemberPw(), dbMemberDto.getMemberPw())) {
 			memberDao.deleteMember(memberDto.getMemberId());
-			return true;
+			return true; // dao와 service의 반환형은 같은 기능을 하더라도 다른 메서드이기 때문에 연관이 없다
 		}
 		
 		return false;

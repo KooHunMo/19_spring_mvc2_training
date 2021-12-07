@@ -34,7 +34,7 @@ import com.spring.training.member.service.MemberService;
 
 
 @Controller
-@RequestMapping("member")
+@RequestMapping("member") // 이건뭐지?
 public class MemberController {
 
 	@Autowired
@@ -49,7 +49,7 @@ public class MemberController {
 	public String join() {
 		return "member/join";
 	}
-	
+	// HttpServletRequest, ResponseEntity, @ResponseBody 두개를 다양하게 쓴 이유 : 공부하기 위해서?
 	@RequestMapping(value = "/join" , method=RequestMethod.POST)
 	public ResponseEntity<Object> join(MemberDto memberDto , HttpServletRequest request) throws Exception {
 		
