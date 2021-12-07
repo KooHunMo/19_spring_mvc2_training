@@ -12,7 +12,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.spring.training.board_advance.dto.BoardAdvanceDto" alias="BoardAdvanceDto"/>
+		<typeAlias type="com.spring.training.member.dto.MemberDto" alias="MemberDto"/>
 	</typeAliases>
-
 
 </configuration>
