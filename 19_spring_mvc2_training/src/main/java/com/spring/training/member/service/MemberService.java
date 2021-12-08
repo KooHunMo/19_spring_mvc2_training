@@ -13,6 +13,4 @@ public interface MemberService {
 	public MemberDto showOneMember(String memberId) throws Exception;
 	public boolean updateMember(MemberDto memberDto) throws Exception;
 	public boolean deleteMember(MemberDto memberDto) throws Exception;
-	
-	
 }

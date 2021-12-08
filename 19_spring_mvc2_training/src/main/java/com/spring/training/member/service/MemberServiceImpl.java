@@ -23,15 +23,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDto.setMemberPw(passwordEncoder.encode(memberDto.getMemberPw())); 
 		memberDao.insert(memberDto);
 	}
-
-	@Override
-	public String overlapped(String memberId) throws Exception {
-		String isOverLapped = "true";
-		if (memberDao.overlapped(memberId) == null) {
-			return "false";  // String 값을 내보냄
-		}
-		return isOverLapped;
-	}
 	
 	@Override
 	public MemberDto loginMember(MemberDto memberDto) throws Exception {
@@ -44,6 +35,15 @@ public class MemberServiceImpl implements MemberService {
 			} 
 		} 
 		return null; // 아이디가 없으면 null값을 내보낸다
+	}
+	
+	@Override
+	public String overlapped(String memberId) throws Exception {
+		String isOverLapped = "true";
+		if (memberDao.overlapped(memberId) == null) {
+			return "false";  // String 값을 내보냄
+		}
+		return isOverLapped;
 	}
 	
 	@Override

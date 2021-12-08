@@ -42,19 +42,14 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.selectOne("mapper.member.showOneMember" , memberId);
 	}
 
+	@Override
+	public void updateMember(MemberDto memberDto) throws Exception {
+		sqlSession.update("mapper.member.updateMember", memberDto);
+	}
 	
 	@Override
 	public void deleteMember(String memberId) throws Exception {
 		sqlSession.delete("mapper.member.deleteMember", memberId);
 	}
-
-	
-	@Override
-	public void updateMember(MemberDto memberDto) throws Exception {
-		sqlSession.update("mapper.member.updateMember", memberDto);
-	}
-
-	
-	
 	
 }

@@ -34,7 +34,7 @@ import com.spring.training.member.service.MemberService;
 
 
 @Controller
-@RequestMapping("member") // 이건뭐지?
+@RequestMapping("member") // value값 앞에 붙음
 public class MemberController {
 
 	@Autowired
@@ -113,7 +113,7 @@ public class MemberController {
 	public String myPage(HttpServletRequest request , Model model) throws Exception {
 		HttpSession session = request.getSession();
 		model.addAttribute("memberDto" , memberService.showOneMember((String)session.getAttribute("loginUser")));
-
+		// ???? loginUser 이거 어디서 나온거
 		return "member/myPage";
 	}	
 	
