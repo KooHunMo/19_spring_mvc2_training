@@ -1,8 +1,8 @@
 package com.spring.training.member.controller;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -147,7 +147,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value="/delete" , method = RequestMethod.GET)
+	@RequestMapping(value="/delete" , method = RequestMethod.GET) // update는 왜 post만 있고 get은 없을까?
 	public String delete() {
 		return "member/delete";
 	}
